@@ -1,6 +1,7 @@
+'use strict'
+
 module.exports = {
-  // 可选类型
-  type: [
+  types: [
     { value: 'feat', name: 'feat: 新功能' },
     { value: 'fix', name: 'fix:  修复' },
     { value: 'docs', name: 'feat:  文档变更' },
@@ -12,7 +13,19 @@ module.exports = {
     { value: 'revert', name: 'revert:  回退' },
     { value: 'build', name: 'build:  打包' }
   ],
-  // 步骤
+
+  // it needs to match the value for field type. Eg.: 'fix'
+  /*
+  scopeOverrides: {
+    fix: [
+      {name: 'merge'},
+      {name: 'style'},
+      {name: 'e2eTest'},
+      {name: 'unitTest'}
+    ]
+  },
+  */
+  // override the messages, defaults are as follows
   messages: {
     type: '请选择提交类型: ',
     customScope: '请输入修改的范围 (可选)',
@@ -21,6 +34,10 @@ module.exports = {
     footer: '请输入要关闭的issue (可选)',
     confirmCommit: '确认要使用以上信息提交? (y/n)'
   },
-  // 默认长度 72
-  subjectLimit: 72
+
+  allowCustomScopes: true,
+  allowBreakingChanges: ['特性', '修复'],
+
+  // limit subject length
+  subjectLimit: 100
 }
