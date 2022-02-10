@@ -38,7 +38,7 @@ module.exports = {
   allowCustomScopes: true,
   allowBreakingChanges: ['特性', '修复'],
 
-  //跳过步骤
+  // 跳过步骤
   skipQuestions: ['body', 'footer'],
 
   // limit subject length
