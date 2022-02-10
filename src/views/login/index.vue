@@ -1,53 +1,78 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" :model="loginForm">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
       <!--username-->
       <el-form-item>
         <span class="svg-container">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <svg-iocn icon="https://res.lgdsunday.club/user.svg"></svg-iocn>
         </span>
-        <el-input placeholder="username" name="username" type="text"></el-input>
+        <el-input
+          placeholder="username"
+          name="username"
+          type="text"
+          v-model="loginForm.username"
+        ></el-input>
       </el-form-item>
       <!--password-->
       <el-form-item>
         <span class="svg-container">
           <el-icon>
-            <avatar />
+            <lock />
           </el-icon>
         </span>
-        <el-input placeholder="password" name="password"></el-input>
+        <el-input
+          placeholder="password"
+          name="password"
+          :type="passwordType"
+          v-model="loginForm.password"
+        ></el-input>
         <span class="show-pwd">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <span class="svg-container" @click="onChangePwdType">
+            <el-icon>
+              <View />
+            </el-icon>
+          </span>
         </span>
       </el-form-item>
 
       <!--  登录按钮    -->
       <el-button type="primary" style="width: 100%; margin-bottom: 30px"
-        >登录</el-button
-      >
+        >登录
+      </el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import { Avatar } from '@element-plus/icons'
-import {} from 'vue'
+import { Lock, View } from '@element-plus/icons'
+import SvgIocn from '@/components/SvgIcon/index.vue'
+import { ref } from 'vue'
+
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123123'
+})
+
+/* 切换密码模式 */
+const passwordType = ref('password')
+/* template 显示密码功能 */
+const onChangePwdType = () => {
+  passwordType.value === 'password'
+    ? (passwordType.value = 'text')
+    : (passwordType.value = 'password')
+}
 </script>
 
 <style lang="scss" scoped>
 $bg: #2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
-$cursor:#fff;
+$dark_gray: #889aa4;
+$light_gray: #eee;
+$cursor: #fff;
 
-.login-container{
+.login-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;
@@ -62,8 +87,8 @@ $cursor:#fff;
   overflow: hidden;
 
   ::v-deep .el-form-item {
-    border: 1px solid rgba(255,255,255,0.1);
-    background-color: rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: #454545;
   }
@@ -79,7 +104,7 @@ $cursor:#fff;
       border-radius: 0;
       padding: 12px 5px 12px 15px;
       color: $light_gray;
-      caret-color:$cursor;
+      caret-color: $cursor;
     }
   }
 
@@ -88,6 +113,15 @@ $cursor:#fff;
     color: $dark_gray;
     vertical-align: middle;
     display: inline-block;
+  }
+
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    font-size: 16px;
+    color: $dark_gray;
+    cursor: pointer;
   }
 
   .title-container {
@@ -100,15 +134,6 @@ $cursor:#fff;
       text-align: center;
       font-weight: bold;
     }
-  }
-
-  .show-pwd {
-    position: absolute;
-    right: 10px;
-    top:7px;
-    font-size: 16px;
-    color: $dark_gray;
-    cursor: pointer;
   }
 }
 </style>
