@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm">
+    <el-form
+      class="login-form"
+      ref="loginFormRef"
+      :model="loginForm"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -39,7 +44,11 @@
       </el-form-item>
 
       <!--  登录按钮    -->
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px"
+      <el-button
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        @click="handleLogin"
+        :loading="loading"
         >登录
       </el-button>
     </el-form>
@@ -50,10 +59,30 @@
 import { Lock, View } from '@element-plus/icons'
 import SvgIocn from '@/components/SvgIcon/index.vue'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 
+/* 用户默认信息 */
 const loginForm = ref({
   username: 'super-admin',
-  password: '123123'
+  password: '123456'
+})
+
+/* 表单验证 */
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      message: '请输入用户名',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: 'blur'
+    }
+  ]
 })
 
 /* 切换密码模式 */
@@ -63,6 +92,30 @@ const onChangePwdType = () => {
   passwordType.value === 'password'
     ? (passwordType.value = 'text')
     : (passwordType.value = 'password')
+}
+
+/* 处理登录 */
+const loading = ref(false)
+const loginFormRef = ref(null)
+const store = useStore()
+const handleLogin = () => {
+  console.log(loginFormRef.value)
+  loginFormRef.value.validate((valid) => {
+    if (!valid) return
+    /* 登录 */
+    loading.value = true
+    store
+      .dispatch('login', loginForm.value)
+      .then(() => {
+        loading.value = false
+        /* TODO: 登录成功后的处理 */
+      })
+      .catch((error) => {
+        console.log(error)
+        loading.value = false
+      })
+  })
+  // 触发vuex中user方法
 }
 </script>
 
