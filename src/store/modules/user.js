@@ -30,7 +30,8 @@ export default {
         })
           /* 请求成功 */
           .then((data) => {
-            this.commit('setToken', data.data.data.token)
+            const { token } = data
+            this.commit('setToken', token)
             resolve()
           })
           /* 请求失败 */
