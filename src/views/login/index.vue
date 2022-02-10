@@ -99,7 +99,6 @@ const loading = ref(false)
 const loginFormRef = ref(null)
 const store = useStore()
 const handleLogin = () => {
-  console.log(loginFormRef.value)
   loginFormRef.value.validate((valid) => {
     if (!valid) return
     /* 登录 */
