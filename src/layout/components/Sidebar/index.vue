@@ -1,6 +1,5 @@
 <template>
-
-  <div>Hello world</div>
+  <div>Sidebar</div>
 </template>
 
 <script setup>

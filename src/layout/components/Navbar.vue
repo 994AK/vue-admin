@@ -1,6 +1,6 @@
 <template>
 
-  <div>Hello world</div>
+  <div>Navbar</div>
 </template>
 
 <script setup>
