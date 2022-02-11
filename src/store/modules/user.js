@@ -1,6 +1,6 @@
 import { getUserInfo, login } from '@/api/sys'
 import md5 from 'md5'
-import { setItem, getItem } from '@/utils/storeage'
+import { setItem, getItem, removeAllItems } from '@/utils/storeage'
 import { TOKEN } from '@/constant'
 import router from '@/router'
 export default {
@@ -54,6 +54,13 @@ export default {
       const res = await getUserInfo()
       this.commit('setUserInfo', res)
       return res
+    },
+    logout() {
+      this.commit('setToken', '')
+      this.commit('setUserInfo', {})
+      removeAllItems()
+      // TODO: 权限缓存
+      router.push('/login')
     }
   }
 }
