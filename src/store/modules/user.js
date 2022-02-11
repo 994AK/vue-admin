@@ -1,4 +1,4 @@
-import { login } from '@/api/sys'
+import { getUserInfo, login } from '@/api/sys'
 import md5 from 'md5'
 import { setItem, getItem } from '@/utils/storeage'
 import { TOKEN } from '@/constant'
@@ -7,7 +7,8 @@ export default {
   /* 单独模块 */
   namespace: true,
   state: () => ({
-    token: getItem(TOKEN) || ''
+    token: getItem(TOKEN) || '',
+    userInfo: {}
   }),
   mutations: {
     setToken(state, token) {
@@ -18,6 +19,9 @@ export default {
        *  value: token
        *  */
       setItem('TOKEN', token)
+    },
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   actions: {
@@ -42,6 +46,14 @@ export default {
             reject(err)
           })
       })
+    },
+
+    /* 获取用户信息动作 */
+    async getUserInfo() {
+      // 请求获取用户信息接口
+      const res = await getUserInfo()
+      this.commit('setUserInfo', res)
+      return res
     }
   }
 }

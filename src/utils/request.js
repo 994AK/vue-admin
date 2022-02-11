@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 import { ElMessage } from 'element-plus'
 
 const service = axios.create({
@@ -6,6 +7,20 @@ const service = axios.create({
   baseUrl: process.env.VUE_APP_BASE_API,
   timeout: 5000
 })
+
+// 请求拦截器
+service.interceptors.request.use(
+  (config) => {
+    //  统一注入 token
+    if (store.getters.token) {
+      config.headers.Authorization = 'Bearer ' + store.getters.token
+    }
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 // 响应拦截器
 service.interceptors.response.use(

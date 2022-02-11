@@ -11,12 +11,15 @@ const whiteList = ['/login']
  *  @param {*} next 是否要过去那个路由
  *
  *  */
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (store.getters.token) {
     // 用户登录成功
     if (to.path === '/login') {
       next('/')
     } else {
+      if (!store.getters.hasUserInfo) {
+        await store.dispatch('getUserInfo')
+      }
       next()
     }
   } else {
