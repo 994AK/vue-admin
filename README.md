@@ -9,16 +9,10 @@ yarn install
 ```
 yarn serve
 ```
+## 后台登录方案
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. 封装axios模块 -> `src/utils/request.js`
+2. 封装接口模块 -> `src/api/sys.js`
+3. 封装登录请求动作 -> `src/store/modules/user.js`
+4. 保存服务返回的token -> `src/utils/storeage.js`
+5. 登录鉴权 -> `src/permission.js`
