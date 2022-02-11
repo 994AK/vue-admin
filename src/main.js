@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
 import './style/index.scss'
+// 路由鉴权
+import './permission'
 
 const app = createApp(App)
 installElementPlus(app)
