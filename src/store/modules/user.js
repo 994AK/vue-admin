@@ -2,6 +2,7 @@ import { login } from '@/api/sys'
 import md5 from 'md5'
 import { setItem, getItem } from '@/utils/storeage'
 import { TOKEN } from '@/constant'
+import router from '@/router'
 export default {
   /* 单独模块 */
   namespace: true,
@@ -32,6 +33,8 @@ export default {
           .then((data) => {
             const { token } = data
             this.commit('setToken', token)
+            // 登录成功后操作 -> 跳转
+            router.push('/')
             resolve()
           })
           /* 请求失败 */
