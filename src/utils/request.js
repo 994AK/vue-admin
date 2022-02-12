@@ -36,7 +36,10 @@ service.interceptors.response.use(
       return Promise.reject(new Error(message))
     }
   },
-  (error) => {
+  async (error) => {
+    if (error.response && error.response.data && error.response.code === 401) {
+      await store.dispatch('logout')
+    }
     ElMessage.error(error.message)
     return Promise.reject(error)
   }
