@@ -37,7 +37,7 @@ export const generateMenus = (routes, basePath = '') => {
     // 不存在children&&meth就不要了
     if (isNull(item.children) && isNull(item.meta)) return
     // 存在children 不存在meta 迭代generateMenus
-    if (isNull(item.meta) && isNull(item.children)) {
+    if (isNull(item.meta) && !isNull(item.children)) {
       result.push(...generateMenus(item.children))
       return
     }

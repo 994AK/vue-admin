@@ -6,15 +6,6 @@ import layout from '@/layout/index.vue'
 const privateRouter = [
   /* 个人中心 */
   {
-    path: '/profile',
-    name: 'profile ',
-    component: () => import('@/views/profile/index.vue'),
-    meta: {
-      title: 'profile',
-      icon: 'el-icon-user'
-    }
-  },
-  {
     path: '/user',
     component: layout,
     redirect: '/article/manage',
@@ -127,6 +118,15 @@ const publicRoutes = [
     redirect: '/profile',
     component: layout,
     children: [
+      {
+        path: '/profile',
+        name: 'profile ',
+        component: () => import('@/views/profile/index.vue'),
+        meta: {
+          title: 'profile',
+          icon: 'el-icon-user'
+        }
+      },
       {
         path: '/404',
         name: '404',
