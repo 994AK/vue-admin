@@ -11,7 +11,7 @@ const privateRouter = [
     redirect: '/article/manage',
     meta: {
       title: 'user',
-      icon: 'personnel'
+      icon: 'el-icon-s-custom'
     },
     children: [
       {
@@ -20,7 +20,7 @@ const privateRouter = [
         component: () => import('@/views/user-manage/index.vue'),
         meta: {
           title: 'userManage',
-          icon: 'personnel-manage'
+          icon: 'el-icon-s-grid'
         }
       },
       {
@@ -29,7 +29,7 @@ const privateRouter = [
         component: () => import('@/views/role-list/index.vue'),
         meta: {
           title: 'roleList',
-          icon: 'role'
+          icon: 'el-icon-notebook-2'
         }
       },
       {
@@ -38,7 +38,7 @@ const privateRouter = [
         component: () => import('@/views/permission-list/index.vue'),
         meta: {
           title: 'permissionList',
-          icon: 'permission'
+          icon: 'el-icon-receiving'
         }
       },
       {
@@ -55,7 +55,7 @@ const privateRouter = [
         component: () => import('@/views/import/index.vue'),
         meta: {
           title: 'excelImport',
-          icon: 'permission'
+          icon: 'el-icon-notebook-1'
         }
       }
     ]
@@ -66,7 +66,7 @@ const privateRouter = [
     redirect: '/article/ranking',
     meta: {
       title: 'article',
-      icon: 'article'
+      icon: 'el-icon-set-up'
     },
     children: [
       {
@@ -75,7 +75,7 @@ const privateRouter = [
         component: () => import('@/views/article-ranking/index.vue'),
         meta: {
           title: 'articleRanking',
-          icon: 'personnel-manage'
+          icon: 'el-icon-medal-1'
         }
       },
       {
@@ -92,7 +92,7 @@ const privateRouter = [
         component: () => import('@/views/article-create/index.vue'),
         meta: {
           title: 'articleCreate',
-          icon: 'personnel-manage'
+          icon: 'el-icon-document-add'
         }
       },
       {
@@ -124,7 +124,7 @@ const publicRoutes = [
         component: () => import('@/views/profile/index.vue'),
         meta: {
           title: 'profile',
-          icon: 'el-icon-user'
+          icon: 'el-icon-user-solid'
         }
       },
       {
@@ -143,7 +143,7 @@ const publicRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...privateRouter, ...publicRoutes]
+  routes: [...publicRoutes, ...privateRouter]
 })
 
 export default router
