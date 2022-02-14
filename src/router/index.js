@@ -4,6 +4,16 @@ import layout from '@/layout/index.vue'
 /* 私有路由表  */
 
 const privateRouter = [
+  /* 个人中心 */
+  {
+    path: '/profile',
+    name: 'profile ',
+    component: () => import('@/views/profile/index.vue'),
+    meta: {
+      title: 'profile',
+      icon: 'el-icon-user'
+    }
+  },
   {
     path: '/user',
     component: layout,
@@ -41,15 +51,6 @@ const privateRouter = [
         }
       },
       {
-        path: '/user/manage',
-        name: 'userManage',
-        component: () => import('@/views/user-manage/index.vue'),
-        meta: {
-          title: 'userManage',
-          icon: 'personnel-manage'
-        }
-      },
-      {
         path: '/user/info/:id',
         name: 'userInfo',
         component: () => import('@/views/user-info/index.vue'),
@@ -62,7 +63,8 @@ const privateRouter = [
         name: 'import',
         component: () => import('@/views/import/index.vue'),
         meta: {
-          title: 'excelImport'
+          title: 'excelImport',
+          icon: 'permission'
         }
       }
     ]
@@ -125,12 +127,6 @@ const publicRoutes = [
     redirect: '/profile',
     component: layout,
     children: [
-      /* 个人中心 */
-      {
-        path: '/profile',
-        name: 'profile ',
-        component: () => import('@/views/profile/index.vue')
-      },
       {
         path: '/404',
         name: '404',
@@ -147,7 +143,7 @@ const publicRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...publicRoutes, ...privateRouter]
+  routes: [...privateRouter, ...publicRoutes]
 })
 
 export default router
