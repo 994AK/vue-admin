@@ -1,15 +1,17 @@
 <template>
   <div class="navbar">
     <Hamburger class="hamburger-container" />
+    <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
+            class='el-padding'
             shape="square"
-            :size="40"
+            :size="35"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
-          <i class="el-icon-s-tools"></i>
+          <i class="el-icon-s-tools el-padding"></i>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
@@ -30,9 +32,9 @@
 </template>
 
 <script setup>
-import {} from 'vue'
 import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 const store = useStore()
 const logout = () => {
   store.dispatch('logout')
@@ -41,16 +43,18 @@ const logout = () => {
 
 <style lang="scss" scoped>
 .navbar {
+  display: flex;
   height: 50px;
   overflow: hidden;
-  position: relative;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
-    line-height: 46px;
-    height: 100px;
-    float: left;
+    //line-height: 46px;
+    //height: 100px;
+    //float: left;
     cursor: pointer;
     // hover 动画
     transition: background 0.5s;
@@ -60,23 +64,28 @@ const logout = () => {
     }
   }
 
-  .right-menu {
+  .breadcrumb-container {
+    flex: 1;
     display: flex;
     align-items: center;
-    float: right;
-    padding-right: 16px;
+  }
 
-    ::v-deep .avatar-container {
-      cursor: pointer;
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
-        .el-avatar {
-          --el-avatar-background-color: none;
-          margin-right: 12px;
-        }
+  .right-menu {
+    margin-right: 30px;
+    .avatar-wrapper {
+      display: flex;
+      //justify-content: center;
+      align-items: center;
+
+      .el-padding {
+        margin: 0 12px;
+      }
+
+      .el-icon-s-tools {
+        font-size: 25px;
       }
     }
   }
+
 }
 </style>

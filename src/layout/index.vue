@@ -5,7 +5,7 @@
   >
     <!--  左边 menu -->
     <sidebar
-      class="sidebar-container"
+      :class="[$store.getters.sidebarOpened ? 'sidebar-container' : 'sidebar-container-mini']"
       :style="{ backgroundColor: variables.menuBg}"
     ></sidebar>
     <!--  顶部 navBer  -->
@@ -27,7 +27,6 @@ import variables from '@/style/variables.scss'
 
 import {} from 'vue'
 
-console.log(variables)
 </script>
 
 <style lang="scss" scoped>
@@ -40,18 +39,5 @@ console.log(variables)
   height: 100%;
   width: 100%;
   display: flex;
-}
-
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
-  transition: width #{$sidebarDuration};
-}
-
-.hideSideBar .fixed-header {
-  width: calc(100% - #{$hideSideBarWidth});
 }
 </style>

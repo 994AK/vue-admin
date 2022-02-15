@@ -7,6 +7,7 @@
     :text-color="$store.getters.cssVar.menuText"
     :active-text-color="$store.getters.cssVar.menuActiveText"
     router
+    class='el-menu-list'
   >
     <sidebar-item v-for="item in routes" :key="item.path" :route="item"
       >></sidebar-item

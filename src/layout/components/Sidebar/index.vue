@@ -1,19 +1,18 @@
 <template>
   <div>
-    <div  class='logo-container'>
+    <div class="logo-container">
       <el-avatar
-        class='logo-img'
-        size="14"
+        class="logo-img"
+        :size="35"
         shape="square"
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
       >
       </el-avatar>
-
-      <h1 class='logo-title'  v-if='$store.getters.sidebarOpened'>
+      <h2 class="logo-title" v-if="$store.getters.sidebarOpened">
         后台管理系统
-      </h1>
+      </h2>
     </div>
-    <el-scrollbar>
+    <el-scrollbar >
       <sidebar-menu></sidebar-menu>
     </el-scrollbar>
   </div>
@@ -21,19 +20,23 @@
 
 <script setup>
 import SidebarMenu from './SidebarMenu.vue'
-import {} from 'vue'
 </script>
 
 <style lang="scss" scoped>
-.logo-container{
+.logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top:14px;
 
   .logo-title {
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 10px;
   }
 }
 
+.el-scrollbar {
+  padding-left: 5px;
+  padding-top: 10px;
+}
 </style>

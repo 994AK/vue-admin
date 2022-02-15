@@ -1,21 +1,25 @@
 #app {
   .main-container {
-    min-height: 100%;
     transition: margin-left #{$sidebarDuration};
-    position: relative;
+    margin-top: 10px;
     flex: 1;
   }
 
   .sidebar-container {
     transition: width #{$sidebarDuration};
     height: 100%;
-    //position: fixed;
-    //top: 0;
-    //bottom: 0;
-    //left: 0;
+    width: 200px;
     z-index: 1001;
     overflow: hidden;
   }
+
+  .sidebar-container-mini {
+    transition: width #{$sidebarDuration};
+    padding-top: 4px;
+    z-index: 1001;
+    overflow: hidden;
+  }
+
 
   // 重置 element-plus的css
   .horizontal-collapse-transition {
@@ -77,10 +81,6 @@
   .hideSidebar {
     .sidebar-container {
       width: 54px !important;
-    }
-
-    .main-container {
-      margin-left: 54px;
     }
 
     .submenu-title-noDropdown {

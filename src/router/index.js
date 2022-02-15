@@ -4,13 +4,12 @@ import layout from '@/layout/index.vue'
 /* 私有路由表  */
 
 const privateRouter = [
-  /* 个人中心 */
   {
     path: '/user',
     component: layout,
     redirect: '/article/manage',
     meta: {
-      title: 'user',
+      title: '系统管理',
       icon: 'el-icon-s-custom'
     },
     children: [
@@ -19,7 +18,7 @@ const privateRouter = [
         name: 'userManage',
         component: () => import('@/views/user-manage/index.vue'),
         meta: {
-          title: 'userManage',
+          title: '用户管理',
           icon: 'el-icon-s-grid'
         }
       },
@@ -28,7 +27,7 @@ const privateRouter = [
         name: 'userRole',
         component: () => import('@/views/role-list/index.vue'),
         meta: {
-          title: 'roleList',
+          title: '用户列表',
           icon: 'el-icon-notebook-2'
         }
       },
@@ -37,7 +36,7 @@ const privateRouter = [
         name: 'userPermission',
         component: () => import('@/views/permission-list/index.vue'),
         meta: {
-          title: 'permissionList',
+          title: '权限列表',
           icon: 'el-icon-receiving'
         }
       },
@@ -54,7 +53,7 @@ const privateRouter = [
         name: 'import',
         component: () => import('@/views/import/index.vue'),
         meta: {
-          title: 'excelImport',
+          title: 'Excel导入',
           icon: 'el-icon-notebook-1'
         }
       }
@@ -123,7 +122,7 @@ const publicRoutes = [
         name: 'profile ',
         component: () => import('@/views/profile/index.vue'),
         meta: {
-          title: 'profile',
+          title: '个人中心',
           icon: 'el-icon-user-solid'
         }
       },
