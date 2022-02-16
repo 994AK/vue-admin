@@ -58,64 +58,27 @@
 <script setup>
 import { Lock, View } from '@element-plus/icons'
 import SvgIocn from '@/components/SvgIcon/index.vue'
-import { ref } from 'vue'
-import { useStore } from 'vuex'
+import { useLogin } from './use/Login'
 
-/* 用户默认信息 */
-const loginForm = ref({
-  username: 'super-admin',
-  password: '123456'
-})
-
-/* 表单验证 */
-const loginRules = ref({
-  username: [
-    {
-      required: true,
-      message: '请输入用户名',
-      trigger: 'blur'
-    }
-  ],
-  password: [
-    {
-      required: true,
-      message: '请输入密码',
-      trigger: 'blur'
-    }
-  ]
-})
-
-/* 切换密码模式 */
-const passwordType = ref('password')
-/* template 显示密码功能 */
-const onChangePwdType = () => {
-  passwordType.value === 'password'
-    ? (passwordType.value = 'text')
-    : (passwordType.value = 'password')
-}
-
-/* 处理登录 */
-const loading = ref(false)
-const loginFormRef = ref(null)
-const store = useStore()
-const handleLogin = () => {
-  loginFormRef.value.validate((valid) => {
-    if (!valid) return
-    /* 登录 */
-    loading.value = true
-    store
-      .dispatch('login', loginForm.value)
-      .then(() => {
-        loading.value = false
-        /* TODO: 登录成功后的处理 */
-      })
-      .catch((error) => {
-        console.log(error)
-        loading.value = false
-      })
-  })
-  // 触发vuex中user方法
-}
+/*
+ *  loginForm 表单
+ *  loginRules 表单验证规则
+ *  loginFormRef 表单验证
+ *  passwordType 密码小眼睛
+ *  loading 登录加载状态
+ *  handleLogin 处理登录方法
+ *  onChangePwdType 处理显示小眼睛方法
+ *
+ *  */
+const {
+  loginForm,
+  loginRules,
+  loginFormRef,
+  passwordType,
+  loading,
+  handleLogin,
+  onChangePwdType
+} = useLogin()
 </script>
 
 <style lang="scss" scoped>
