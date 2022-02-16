@@ -1,52 +1,27 @@
 <template>
   <el-breadcrumb separator="/">
-    <transition-group name='breadcrumb'>
+    <transition-group name="breadcrumb">
       <el-breadcrumb-item
         v-for="(item, index) in breadcrumbData"
         :key="item.path"
       >
         <!-- 不可点击项    -->
         <span class="no-redirect" v-if="index === breadcrumbData.length - 1">{{
-            item.meta.title
-          }}</span>
+          item.meta.title
+        }}</span>
         <!-- 可点击项 -->
         <span class="redirect" v-else @click="onLinkClick(item)">{{
-            item.meta.title
-          }}</span>
+          item.meta.title
+        }}</span>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
 </template>
 
 <script setup>
-import { watch, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { useBreadcrumb } from './use/Breadcrumb'
 
-const breadcrumbData = ref([])
-const route = useRoute()
-const router = useRouter()
-const store = useStore()
-const getBreadcrumbData = () => {
-  // route.matched获取当前路由的标准化路由记录
-  breadcrumbData.value = route.matched.filter(
-    (item) => item.meta && item.meta.title
-  )
-}
-
-const onLinkClick = (item) => {
-  router.push(item.path)
-}
-
-watch(
-  route,
-  () => {
-    getBreadcrumbData()
-  },
-  { immediate: true }
-)
-
-const linkHoverColor = ref(store.getters.cssVar.menuBg)
+const { breadcrumbData, onLinkClick, linkHoverColor } = useBreadcrumb()
 </script>
 
 <style lang="scss" scoped>
