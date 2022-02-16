@@ -22,10 +22,7 @@
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain'
-
 import variables from '@/style/variables.scss'
-
-import {} from 'vue'
 
 </script>
 

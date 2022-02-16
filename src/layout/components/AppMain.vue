@@ -4,9 +4,7 @@
   </div>
 </template>
 
-<script setup>
-import {} from 'vue'
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 @import '~@/style/mixin.scss';
@@ -18,5 +16,4 @@ import {} from 'vue'
   padding: 61px 20px 20px 20px;
   box-sizing: border-box;
 }
-
 </style>

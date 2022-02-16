@@ -21,6 +21,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { filterRoutes, generateMenus } from '@/utils/route'
 import SidebarItem from './SidebarItem.vue'
 const router = useRouter()
+
+// menu菜单 渲染方法
 const routes = computed(() => {
   const fRoutes = filterRoutes(router.getRoutes())
   return generateMenus(fRoutes)

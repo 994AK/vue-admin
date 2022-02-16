@@ -1,27 +1,21 @@
 <template>
   <div class="hamburger-container" @click="toggleClick">
-    <el-icon class='hamburger'>
-      <ArrowLeftBold v-if='icon'/>
-      <ArrowRightBold v-else/>
+    <el-icon class="hamburger">
+      <ArrowLeftBold v-if="icon" />
+      <ArrowRightBold v-else />
     </el-icon>
   </div>
 </template>
 
 <script setup>
 import { ArrowRightBold, ArrowLeftBold } from '@element-plus/icons'
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-const store = useStore()
-const toggleClick = () => {
-  store.commit('triggerSidebarOpened')
-}
-const icon = computed(() => {
-  return store.getters.sidebarOpened
-})
+import { useHamburger } from './use/Hamburger'
+
+const { icon, toggleClick } = useHamburger
 </script>
 
 <style lang="scss" scoped>
-.hamburger-container{
+.hamburger-container {
   padding: 0 16px;
   .hamburger {
     display: inline-block;
