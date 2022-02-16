@@ -7,7 +7,7 @@ const privateRouter = [
   {
     path: '/user',
     component: layout,
-    redirect: '/article/manage',
+    redirect: '/user/manage',
     meta: {
       title: '系统管理',
       icon: 'el-icon-s-custom'
