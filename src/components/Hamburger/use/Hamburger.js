@@ -7,6 +7,7 @@ export const useHamburger = () => {
       return store.getters.sidebarOpened
     }),
     toggleClick() {
+      console.log(1)
       store.commit('triggerSidebarOpened')
     }
   })

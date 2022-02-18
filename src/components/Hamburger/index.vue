@@ -11,7 +11,7 @@
 import { ArrowRightBold, ArrowLeftBold } from '@element-plus/icons'
 import { useHamburger } from './use/Hamburger'
 
-const { icon, toggleClick } = useHamburger
+const { icon, toggleClick } = useHamburger()
 </script>
 
 <style lang="scss" scoped>

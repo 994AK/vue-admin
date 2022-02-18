@@ -11,9 +11,7 @@
 @import '~@/style/variables.scss';
 
 .app-main {
-  position: relative;
-  overflow: hidden;
-  padding: 61px 20px 20px 20px;
-  box-sizing: border-box;
+  margin: 30px;
+  //border: 1px solid red;
 }
 </style>
